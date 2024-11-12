@@ -1,0 +1,152 @@
+/* default css */
+
+* {
+  background-color: black;
+  color: aliceblue;
+  font-size: large;
+  font-family: "Roboto"
+}
+
+input {
+  border-radius: 8px;
+}
+
+label { 
+  background-color: transparent !important; 
+}
+
+.projectTitle-input {
+  margin-bottom: 4vh;
+}
+
+.title-div, .description-div, .dueDate-div, .priority-div, .notes-div, .checkbox-div {
+  width: fit-content;
+  background-color: transparent !important; 
+  /* color: black !important; */
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 10vh;
+  height: 100vh;
+}
+
+.projects-title {
+  font-size: 6vh;
+  font-weight: 600;
+}
+
+.projects {
+  display: grid;
+  gap: 4vh;
+  align-self: baseline;
+}
+
+.projects > :not(:first-child) {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  text-align: center;
+}
+.projects > :not(:first-child) > :first-child {
+  grid-column: span 2;
+}
+
+.todoContainer, .todo {
+  display: grid;
+  gap: 2vh;
+  width: fit-content;
+}
+
+.todo {
+  margin-top: 4vh;
+}
+
+fieldset > legend {
+  margin-top: 2vh;
+  font-size: 4.5vh !important;
+}
+
+button#modal{
+  border-radius: 8px;
+}
+
+.main-fieldset {
+  height: fit-content;
+  display: grid;
+}
+
+.left-panel {
+  grid-column: 1;
+  display: grid;
+}
+
+dialog {
+  animation: fade-out 0.7s ease-out,
+}
+
+dialog[open] {
+  animation: fade-in 0.7s ease-out;
+}
+
+dialog[open]::backdrop {
+  animation: backdrop-fade-in 0.7s ease-out forwards,
+}
+
+fieldset {
+  width: fit-content;
+}
+
+.addNewTodoContainer {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(7, 1fr);
+  gap: 2vh;
+}
+
+.title {
+  grid-row: 1;
+}
+
+.description {
+  grid-row: 2;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+    display: none;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+    display: block;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+      opacity: 1;
+      transform: scaleY(1);
+      display: block;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleY(0);
+    display: none;
+  }
+}
+
+@keyframes backdrop-fade-in {
+  0% {
+    background-color: rgb(0 0 0 / 0%);
+  }
+
+  100% {
+    background-color: rgb(0 0 0 / 25%);
+  }
+}
