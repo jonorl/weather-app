@@ -1,7 +1,7 @@
 {
-  "name": "todo-list",
+  "name": "weather-app",
   "version": "1.0.0",
-  "description": "Todo list Page project for Project Odin",
+  "description": "Weather App for The Odin Project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
