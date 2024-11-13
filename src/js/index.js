@@ -33,6 +33,7 @@ const weekday = [
   "Saturday",
 ];
 let day = weekday[date.getDay()];
+console.log(weekday[date.getDay()+1])
 const searchBtn = document.querySelector("#search");
 const loader = document.querySelector(".loader");
 
@@ -47,16 +48,11 @@ searchBtn.addEventListener("click", () => {
 
 function weather() {
   getWeather();
-  async function getWeather() {
+  function getWeather() {
     try {
       loader.style.display = "block";
-      const response = await fetch(URL, { mode: "cors" });
-      const weatherData = await response.json();
-      temperature = weatherData.days[0].temp;
-      conditions = weatherData.days[0].conditions;
-      weatherIcon = weatherData.days[0].icon;
-      console.log(weatherData.days[0].conditions);
-      console.log(weatherData);
+      // console.log(weatherData.days[0].conditions);
+      // console.log(weatherData);
       renderTemp();
       loader.style.display = "none";
     } catch (error) {
@@ -65,7 +61,8 @@ function weather() {
   }
 }
 
-function renderTemp() {
+async function renderTemp() {
+
   const resultsContainer = document.querySelector(".results");
 
   // Remove children if any
@@ -74,9 +71,18 @@ function renderTemp() {
     resultsContainer.removeChild(resultsContainer.lastChild);
   }
 
+  for (let i = 0; i < 5; i++){ 
+
+  const response = await fetch(URL, { mode: "cors" });
+  const weatherData = await response.json();
+
+  temperature = weatherData.days[i].temp;
+  conditions = weatherData.days[i].conditions;
+  weatherIcon = weatherData.days[i].icon;
+
   const todayDate = document.createElement("div");
-  todayDate.classList.add("today");
-  todayDate.textContent = day;
+  todayDate.classList.add("today"+i);
+  todayDate.textContent = weekday[date.getDay()+i];
 
   const cityNameDisplay = document.createElement("div");
   cityNameDisplay.classList.add("cityNameDisplay");
@@ -93,7 +99,6 @@ function renderTemp() {
   const icon = document.createElement("img");
   icon.classList.add("icon");
   icon.src = images[`${weatherIcon}.svg`];
-  console.log(icon.src);
 
   resultsContainer.append(
     todayDate,
@@ -102,4 +107,5 @@ function renderTemp() {
     conditionDisplay,
     icon
   );
+}
 }
