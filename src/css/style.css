@@ -4,9 +4,15 @@
   background-color: black;
   color: aliceblue;
   font-size: large;
-  font-family: "Roboto"
+  font-family: "Roboto";
 }
 
+.icon {
+  height: 15vh;
+  width: auto;
+}
+
+/* Spinning ball loader */
 .loader {
   display: none;
   border: 16px solid #f3f3f3;
@@ -19,6 +25,10 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="main-container">
-        <input type="text" id='city' placeholder="City name">
-        <button id="search">Search</button>
-        <div class="radio">
-             <input type="radio" id="metric" name=",metric" value="metric" checked="checked">
-             <label for="metric">Metric</label><br>
-             <input type="radio" id="us" name="us" value="us">
-             <label for="us">Imperial</label><br>
-        </div>
-        <div class="results"></div>
-        <div class="loader"></div>
-
+      <input type="text" id="city" placeholder="City name" />
+      <div class="radio">
+        <input
+          type="radio"
+          id="metric"
+          name=",metric"
+          value="metric"
+          checked="checked"
+        />
+        <label for="metric">Metric</label><br />
+        <input type="radio" id="us" name="us" value="us" />
+        <label for="us">Imperial</label><br />
+      </div>
+      <button id="search">Search</button>
+      <div class="results"></div>
+      <div class="loader"></div>
     </div>
-</body>
+  </body>
 </html>
