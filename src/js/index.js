@@ -32,8 +32,8 @@ const weekday = [
   "Friday",
   "Saturday",
 ];
-let day = weekday[date.getDay()];
-console.log(weekday[date.getDay()+1])
+// let day = weekday[date.getDay()];
+console.log(weekday[date.getDay() + 1]);
 const searchBtn = document.querySelector("#search");
 const loader = document.querySelector(".loader");
 
@@ -43,26 +43,12 @@ searchBtn.addEventListener("click", () => {
   location = document.querySelector("#city").value;
   unit = document.querySelector("#metric").checked ? "metric" : "us";
   URL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${api_key}&unitGroup=${unit}`;
-  weather();
+  renderTemp();
 });
 
-function weather() {
-  getWeather();
-  function getWeather() {
-    try {
-      loader.style.display = "block";
-      // console.log(weatherData.days[0].conditions);
-      // console.log(weatherData);
-      renderTemp();
-      loader.style.display = "none";
-    } catch (error) {
-      alert(error);
-    }
-  }
-}
+// DOM functions
 
 async function renderTemp() {
-
   const resultsContainer = document.querySelector(".results");
 
   // Remove children if any
@@ -71,41 +57,47 @@ async function renderTemp() {
     resultsContainer.removeChild(resultsContainer.lastChild);
   }
 
-  for (let i = 0; i < 5; i++){ 
+  try {
+    loader.style.display = "block";
 
-  const response = await fetch(URL, { mode: "cors" });
-  const weatherData = await response.json();
+    for (let i = 0; i < 5; i++) {
+      const response = await fetch(URL, { mode: "cors" });
+      const weatherData = await response.json();
 
-  temperature = weatherData.days[i].temp;
-  conditions = weatherData.days[i].conditions;
-  weatherIcon = weatherData.days[i].icon;
+      temperature = weatherData.days[i].temp;
+      conditions = weatherData.days[i].conditions;
+      weatherIcon = weatherData.days[i].icon;
 
-  const todayDate = document.createElement("div");
-  todayDate.classList.add("today"+i);
-  todayDate.textContent = weekday[date.getDay()+i];
+      const dayOfWeek = document.createElement("div");
+      dayOfWeek.classList.add("date" + i);
+      dayOfWeek.textContent = weekday[(date.getDay() + i) % weekday.length]; // Using modulo to avoid going over 7 days array
 
-  const cityNameDisplay = document.createElement("div");
-  cityNameDisplay.classList.add("cityNameDisplay");
-  cityNameDisplay.textContent = location;
+      const cityNameDisplay = document.createElement("div");
+      cityNameDisplay.classList.add("cityNameDisplay");
+      cityNameDisplay.textContent = location;
 
-  const temperatureDisplay = document.createElement("div");
-  temperatureDisplay.classList.add("temperatureDisplay");
-  temperatureDisplay.textContent = temperature;
+      const temperatureDisplay = document.createElement("div");
+      temperatureDisplay.classList.add("temperatureDisplay");
+      temperatureDisplay.textContent = temperature;
 
-  const conditionDisplay = document.createElement("div");
-  conditionDisplay.classList.add("conditionDisplay");
-  conditionDisplay.textContent = conditions;
+      const conditionDisplay = document.createElement("div");
+      conditionDisplay.classList.add("conditionDisplay");
+      conditionDisplay.textContent = conditions;
 
-  const icon = document.createElement("img");
-  icon.classList.add("icon");
-  icon.src = images[`${weatherIcon}.svg`];
+      const icon = document.createElement("img");
+      icon.classList.add("icon");
+      icon.src = images[`${weatherIcon}.svg`];
 
-  resultsContainer.append(
-    todayDate,
-    cityNameDisplay,
-    temperatureDisplay,
-    conditionDisplay,
-    icon
-  );
-}
+      resultsContainer.append(
+        dayOfWeek,
+        cityNameDisplay,
+        temperatureDisplay,
+        conditionDisplay,
+        icon
+      );
+    }
+    loader.style.display = "none";
+  } catch (error) {
+    alert(error);
+  }
 }
