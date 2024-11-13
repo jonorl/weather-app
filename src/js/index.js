@@ -32,8 +32,7 @@ const weekday = [
   "Friday",
   "Saturday",
 ];
-// let day = weekday[date.getDay()];
-console.log(weekday[date.getDay() + 1]);
+// console.log(weekday[date.getDay() + 1]);
 const searchBtn = document.querySelector("#search");
 const loader = document.querySelector(".loader");
 
