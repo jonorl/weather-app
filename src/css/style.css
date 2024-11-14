@@ -7,13 +7,73 @@
   font-family: "Roboto";
 }
 
+.main-container {
+  justify-self: center;
+}
+
+.search-area {
+  justify-self: center;
+  margin-top: 10vh;
+
+  display: grid;
+  gap: 2vh;
+}
+
+.search-area > * {
+  justify-self: center;
+
+}
+
+button {
+  margin-top: 1vh;
+  display: flex;
+  justify-content: center;
+}
+
 .icon {
-  height: 15vh;
-  width: auto;
+  height: 14vh;
+  width: 6vw;
+  justify-self: center;
+  align-items: center;
+}
+
+.results {
+  width: max-content;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto repeat(5, 0.5fr);
+  grid-template-areas: 
+  "header header header header header"
+  "a a a a a"
+  "b b b b b"
+  "c c c c c"
+  "d d d d d"
+  "e e e e e";
+  grid-auto-flow: column;
+}
+
+.header {
+  grid-area: header;
+  font-size: 50px;
+}
+
+.results > * {
+  /* display: flex; */
+  padding-left: 1vw;
+  padding-right: 1vw;
+  justify-self: center;
+  align-self: center;
+}
+
+div[class^="date"] {
+  font-size: 30px;
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 /* Spinning ball loader */
 .loader {
+  justify-self: center;
   display: none;
   border: 16px solid #f3f3f3;
   border-radius: 50%;

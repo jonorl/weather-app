@@ -7,22 +7,26 @@
   </head>
   <body>
     <div class="main-container">
-      <input type="text" id="city" placeholder="City name" />
-      <div class="radio">
-        <input
-          type="radio"
-          id="metric"
-          name="unit"
-          value="metric"
-          checked="checked"
-        />
-        <label for="metric">Metric</label>
-        <input type="radio" id="us" name="unit" value="us" />
-        <label for="us">Imperial</label>
+      <div class="search-area">
+        <input type="text" id="city" placeholder="City name" />
+        <div class="radio">
+          <input
+            type="radio"
+            id="metric"
+            name="unit"
+            value="metric"
+            checked="checked"
+          />
+          <label for="metric">Metric</label>
+          <input type="radio" id="us" name="unit" value="us" />
+          <label for="us">Imperial</label>
+        </div>
+        <button id="search">Search</button>
       </div>
-      <button id="search">Search</button>
-      <div class="results"></div>
+
       <div class="loader"></div>
+      <div class="results"></div>
+
     </div>
   </body>
 </html>

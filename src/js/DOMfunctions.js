@@ -4,15 +4,16 @@ import { location, unit, URLAddress } from "./index";
 
 // Global variables
 
-let temperature;
-
 let conditions;
-let weatherIcon;
 const date = new Date();
-const images = importAll(
   // import all images from images directory with help of the function below
+const images = importAll(
+  // eslint-disable-next-line no-undef
   require.context("../images", false, /\.(png|jpe?g|gif|svg)$/)
 );
+const loader = document.querySelector(".loader");
+let temperature;
+let weatherIcon;
 const weekday = [
   "Sunday",
   "Monday",
@@ -22,8 +23,6 @@ const weekday = [
   "Friday",
   "Saturday",
 ];
-
-const loader = document.querySelector(".loader");
 
 // DOM functions
 
@@ -35,6 +34,11 @@ export async function renderTemp() {
   while (resultsContainer.firstChild) {
     resultsContainer.removeChild(resultsContainer.lastChild);
   }
+
+  const header = document.createElement("h1");
+  header.classList.add("header");
+  header.textContent = '5-day forecast'
+  resultsContainer.append(header)
 
   try {
     loader.style.display = "block";
