@@ -21,7 +21,6 @@
 
 .search-area > * {
   justify-self: center;
-
 }
 
 button {
@@ -42,13 +41,13 @@ button {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: auto repeat(5, 0.5fr);
-  grid-template-areas: 
-  "header header header header header"
-  "a a a a a"
-  "b b b b b"
-  "c c c c c"
-  "d d d d d"
-  "e e e e e";
+  grid-template-areas:
+    "header header header header header"
+    "a a a a a"
+    "b b b b b"
+    "c c c c c"
+    "d d d d d"
+    "e e e e e";
   grid-auto-flow: column;
 }
 

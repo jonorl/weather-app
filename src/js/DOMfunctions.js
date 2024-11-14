@@ -6,7 +6,7 @@ import { location, unit, URLAddress } from "./index";
 
 let conditions;
 const date = new Date();
-  // import all images from images directory with help of the function below
+// import all images from images directory with help of the function below
 const images = importAll(
   // eslint-disable-next-line no-undef
   require.context("../images", false, /\.(png|jpe?g|gif|svg)$/)
@@ -37,8 +37,8 @@ export async function renderTemp() {
 
   const header = document.createElement("h1");
   header.classList.add("header");
-  header.textContent = '5-day forecast'
-  resultsContainer.append(header)
+  header.textContent = "5-day forecast";
+  resultsContainer.append(header);
 
   try {
     loader.style.display = "block";
