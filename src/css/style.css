@@ -9,6 +9,7 @@
 
 .main-container {
   display: grid;
+  /* justify items!! */
   justify-items: center;
 }
 
