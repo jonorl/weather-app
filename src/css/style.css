@@ -9,7 +9,7 @@
 
 .main-container {
   display: grid;
-  justify-self: center;
+  justify-items: center;
 }
 
 .search-area {
